@@ -26,16 +26,15 @@ def start_vm(proj,location,vmname):
 
 
 if __name__=="__main__":
+    
     #projects=["kartik-test-project-415817","practical-proxy-413809"]
-    for proj in projects:
-        instances = list_vm()
-        for i in instances:
-            if i["state"]=="TERMINATED":
-                string = i["name"]
-                split_string = string.split("/")
-                project_id = split_string[4]
-                instance_id = split_string[-1]
+    for i in instances:
+        if i["state"]=="TERMINATED":
+            string = i["name"]
+            split_string = string.split("/")
+            project_id = split_string[4]
+            instance_id = split_string[-1]
 
-                start_vm(project_id,i["location"],instance_id)
+            start_vm(project_id,i["location"],instance_id)
                 #print(project_id,instance_id)
 
