@@ -5,7 +5,7 @@ import googleapiclient.discovery
 # Run gcloud command to fetch compute instance information
 
 def list_vm():
-    output = subprocess.run(['gcloud', 'asset', 'search-all-resources', '--scope=projects/practical-proxy-413809', '--asset-types=compute.googleapis.com/Instance', '--read-mask=name,project,location,state'], capture_output=True, text=True)
+    output = subprocess.run(['gcloud', 'asset', 'search-all-resources', '--scope=projects/practical-proxy-413809', '--asset-types=compute.googleapis.com/Instance', '--read-mask=name,project,location,state','--query=labels.autostartstop:yes'], capture_output=True, text=True)
     # Parse the output
     instances = []
     for item in output.stdout.strip().split('---\n'):
