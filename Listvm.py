@@ -1,9 +1,17 @@
 
 import subprocess
+import json
 
 def list_vm():
     proj = "your-project-id"
     output = subprocess.run(['gcloud', 'asset', 'search-all-resources', '--scope=projects/'+proj, '--asset-types=compute.googleapis.com/Instance', '--read-mask=name,project,location,state','--query=labels.autostartstop:yes'], capture_output=True, text=True)
+    
+    # Check if the command was successful
+    if output.returncode != 0:
+        print("Error executing command:")
+        print(output.stderr)
+        return
+    
     # Parse the output
     instances = []
     for item in output.stdout.strip().split('---\n'):
