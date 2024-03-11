@@ -27,7 +27,6 @@ def start_vm(proj,location,vmname):
 
 if __name__=="__main__":
     
-    #projects=["kartik-test-project-415817","practical-proxy-413809"]
     for i in instances:
         if i["state"]=="TERMINATED":
             string = i["name"]
