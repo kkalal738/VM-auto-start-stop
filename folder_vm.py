@@ -1,10 +1,10 @@
-
+import googleapiclient.discovery
 import subprocess
 import json
 
 def list_vm():
     proj = "your-project-id"
-    output = subprocess.run(['gcloud', 'asset', 'search-all-resources', '--scope=project/kartik-test-project-415817', '--asset-types=compute.googleapis.com/Instance', '--read-mask=name,project,location,state','--query=labels.autostartstop:yes'], capture_output=True, text=True)
+    output = subprocess.run(['gcloud', 'asset', 'search-all-resources', '--scope=projects/kartik-test-project-415817', '--asset-types=compute.googleapis.com/Instance', '--read-mask=name,project,location,state','--query=labels.autostartstop:yes'], capture_output=True, text=True)
     
     # Check if the command was successful
     if output.returncode != 0:
